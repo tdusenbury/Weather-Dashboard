@@ -1,0 +1,49 @@
+:root {
+    --primary: #BBDAE7;
+    --secondary: #18AAE9;
+    --dark: #114F6A;
+    --dark-dark: #092430;
+    --light-dark: #197AA4;
+    --border-radius: 5px;
+}
+* {
+    box-sizing: border-box;
+}
+body{
+    background-color: var(--primary);
+    margin: 0;
+    padding: 0;
+    font-family: "Arimo";
+    color: var(--dark);
+    line-height: 2.0;
+    font-size: 16px;
+}
+.header {
+    background-color: var(--dark-dark);
+    color: var(--primary);
+    font-size: 24px;
+}
+.title {
+    color: var(--primary);
+}
+h1 {
+    font-size: 24px;
+    color: var(--dark);
+    margin: 0;
+    line-height: 4.0;
+}
+main {
+    margin: 22px auto;
+    width: 90%
+}
+.btn {
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+    border-radius: var(--border-radius);
+    color: var(--primary);
+    background-color: var(--dark);  
+    box-shadow: 3px 3px var(--light-dark);
+
+}
+
