@@ -8,6 +8,7 @@
 }
 * {
     box-sizing: border-box;
+    font-family: 'Arimo':
 }
 body{
     background-color: var(--primary);
@@ -16,21 +17,19 @@ body{
     font-family: "Arimo";
 }
 header {
+    width: 100%;
     justify-content: right;
     background-color: var(--dark-dark);
     height: 200px;
     display: flex;
     flex-wrap: wrap;
 }
-.title {
+header h1 {
     color: var(--primary);
     margin-left: 95px;
     font-size: 60px;
-}
-h1 {
-    font-size: 36px;
-    color: var(--dark);
-    margin: 0;
+    display: flex;
+    flex-wrap: display;
     line-height: 3.0;
 }
 .flex-row {
@@ -52,51 +51,64 @@ main {
     margin: 5px;
     color: var(--dark-dark);
     padding: 5px;
-    border-radius: 0,
+    border-radius: 0;
     margin: 0 0 25px 0;
     /*border: 1px solid var(--dark-dark);*/
 }
-.card-city {
-    padding: 5px;
+#cityName {
+    margin-left: 10px;
+    width: 50%;
+
 }
-.form-label, .city-input {
+#submitBtn {
+    width: 97%;
     display: block;
-    margin: 10px 10px 10px 20px;
-}
-.city-input {
-    width: 95%;
-    font-size: 28px;
-}
-.btn {
-    width: 100%;
-    display: block;
-    margin: 10px 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
     color: var(--primary);
     background-color: var(--dark);
+    font-size: 20px;
 }
-.subtitle {
-    margin-left: 30px;
-}
+
 #city-list-container {
 
 }
-
-#card2 {
+#today-weather {
+ 
+}
+#city-today {
+    color: whitesmoke;
+}
+.row {
+    background-color: var(--light-dark);
     margin-left: 30px;
     margin-bottom: 0px;
     padding: 10px;
     border: 2px solid var(--dark-dark);
 }
-#card3 {
-    margin-top: 140px;
+#temp-today, #wind-today, #humidity-today {
+    color: var(--dark-dark);
+    font-size: 20px;
+    font-weight: 575;
+}
+h3 {
     margin-left: 30px;
-    padding: 10px;
-    border: 2px solid var(--dark-dark);
+    margin-bottom: 0px;
+    padding: 10px; 
+}
+#forecast-row {
+
+}
+section {
+    border-radius: 5px;
+    background-color: whitesmoke; 
+    border-style: line;
+}
+ul {
+    margin-right: 30px;
 }
 
-#five-day-boxes {
-
-}
 
 @media (max-width: 600px){
     .column {

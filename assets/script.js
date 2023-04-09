@@ -1,7 +1,75 @@
-var currentTempEl = document.getElementById('temp');
-var currentWindEl = document.getElementById('wind');
-var currentHumidity = document.getElementById('humidity');
-var date = dayjs().format('ddd, MMMM D YYYY  h:mm: a')
+var cityNameEl
+
+$('#submitBtn').on("click", "submit", function (event) {
+    event.preventDefault();
+    let cityName= $('#cityName').val();
+    let buttonString = JSON.parse(localStorage.getItem("cityString")) || [];
+    if (!cityName) {
+        alert ("Please enter a city name.")
+    }else {
+        let appendedButton = $(("<li></li>"))
+        appendedButton.text(cityName)
+        appendedButton.attr("id", cityName)
+        appendedButton.addClass("weather btn")
+        buttonList.append(appendedButton);
+        cityString.push(cityName)
+        localStorage.setItem("cityString", JSON.stringify(cityString));
+        findWeather(cityName);
+    }
+});
+
+
+
+
+
+
+$(".btn").on("click", function (event){
+    let buttonSearch = $(event.target).attr("id")
+    findWeather(buttonSearch)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*var currentTempEl = document.getElementById('temp-today');
+var currentWindEl = document.getElementById('wind-today');
+var currentHumidity = document.getElementById('humidity-today');
+var date = dayjs().format('dddd, MMMM D YYYY  h:mm: a')
+var city="Seattle";
+var cityEl = document.getElementById('cityName')
 
 function getCurrentWeather(event) {
     var queryURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=39528ad9ef6dff5e6f23805d2078c512"
@@ -14,15 +82,17 @@ $.ajax( {
     console.log(queryURL);
     console.log(response);
     
-    $("#city-container").html("<h2>Currently in " + response.name + date + "</h2>");
-    $("#wind").html("<p>Wind Speed: " + response.wind.speed + "</p>");
-    $("#humidity").text("Humidity: " + response.main.humidity);
-    $("#temp").text("Temperature (F) " + response.main.temp);
+    $("#city-today").html("<h2>Currently in " + response.name + date + "</h2>");
+    $("#wind-today").html("<p>Wind Speed: " + response.wind.speed + "</p>");
+    $("#humidity-today").text("Humidity: " + response.main.humidity);
+    $("#temp-today").text("Temperature (F) " + response.main.temp);
 } );
 
+}
+getCurrentWeather();
 
 
-
+cityEl.addEventListener('submit', getCurrentWeather);*/
 
 /*
 
@@ -55,4 +125,4 @@ var getCityWeather=function(user) {
 
 
 
-userFormEl.addEventListener('submit', formSubmitHandler)
+userFormEl.addEventListener('submit', formSubmitHandler) */
