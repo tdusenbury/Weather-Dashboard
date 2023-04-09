@@ -12,26 +12,48 @@
 </head>
 
 <body class="flex-column min-100-vh">
-    <header class="header">
-        <h1 class="title">WEATHER or Not You Go Outside Today......Here is your forecast:</h1>
+    <header class=".container-fluid header flex-row .d-flex">
+        <h1 class="title col">WEATHER DASHBOARD</h1>
     </header>
 
-    <main class = "flex-row justify space-between">
-        <div class="col-12 col-md-4">
-
+    <main class = "flex-row justify-space-between">
+        <div id ="left-column" class="col-12 col-md-4">
             <div class="card">
                 <h3 class="card-header text-uppercase">SEARCH FOR A CITY:</h3>
                 <form id="city-form" class="card-city">
+                    <label class="form-label" for="cityName"></label>
                     <input name="cityName" id="cityName" type="text"autofocus="text-uppercase" class="city-input"/>
-                    <button type="submit" class="btn">Search</button>
+                    <button type="submit" class="btn">SEARCH</button>
                 </form>
+            </div>
+            <div>
+                <h5>Previous City Search: <span id="city-search-term"></span></h5>
+                <div id="city-list-container" class="city-list-group"></div>
             </div>
         </div>
 
-        <div class="col-12 col-md-8">
-            <h2 class="subtitle">Saved Cities: <span id = "city-search-term"></span></h2>
-            <div id="city-container" class="city-list"></div>
+        <div id="right-column" class="col-12 col-md-8">
+            <div class="card">
+                <h2 class="subtitle">Today's weather in: <span id = "city-search-term"></span></h2>
+                <div id="city-container" class="city-list">
+                </div>
+            </div>
+                
+            <div class="card">
+                <h3> 5-Day Forecast</h3>
+            </div>
+
+            <div id="five-day-boxes"> 
+               <div class="row">
+                    <div class="col-md-1.5 five-forecast border-dark rounded"></div>
+            </div>
+            </div>
         </div>
+
+    
+
+
+
     </main>
 
 </body>
