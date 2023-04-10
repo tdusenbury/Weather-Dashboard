@@ -15,17 +15,17 @@ let findWeather=function(input) {
     }) .then(function (weatherData) {
             $("#today-weather").show();
             $("#forecast-row").show();
-            $("#city-today").text(weatherInfo + input + " " + moment().format("M/D/Y"))
-            $("#weather-icon").attr("src", "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png")
-            $("#today-weather").children().eq(1).text("Temperature: " + weatherData.temp)
-            $("#today-weather").children().eq(2).text("Wind Speed (mph): " + weatherData.wind.speed)
-            $("#today-weather").children().eq(3).text("Humidity: " + weatherData.main.humidity)
+            $("#city-today").text(input + " " + moment().format("M/D/Y")) /*City and today's date*/
+            $("#weather-icon").attr("src", "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png") /*NOT SHOWING: Weather icon next to city and today's date*/
+            $("#today-weather").children().eq(1).text("Temperature: " + weatherData.main.temp) /*Today's Temperature*/
+            $("#today-weather").children().eq(2).text("Wind Speed (mph): " + weatherData.wind.speed) /*Today's Wind*/
+            $("#today-weather").children().eq(3).text("Humidity: " + weatherData.main.humidity) /*Today's Humidity*/
             for (x = 1; x < 6; x++)
-                $("#" + x).children().eq(0).text(moment().add(x,"d").format("M/D/Y"))
-                $("#" + x).children().eq(1).attr("src", "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png")
-                $("#" + x).children().eq(2).text("Temperature: " + weatherData.temp)
-                $("#" + x).children().eq(3).text("Wind Speed: " + weatherData.wind.speed)
-                $("#" + x).children().eq(4).text("Humidity: " + weatherData.humidity)
+                $("#" + x).children().eq(0).text(moment().add(x,"d").format("M/D/Y")) /*5-day boxes*/
+                $("#" + x).children().eq(0).attr("src", "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png") /*5-day boxes*/
+                $("#" + x).children().eq(1).text("Temperature: " + weatherData.main.temp) /*NOT SHOWING*/
+                $("#" + x).children().eq(2).text("Wind Speed (mph): " + weatherData.wind.speed) /*NOT SHOWING*/
+                $("#" + x).children().eq(3).text("Humidity: " + weatherData.main.humidity) /*NOT SHOWING*/
                 console.log(weatherData)
             })
         })
