@@ -1,42 +1,37 @@
-var weatherInfo = [];
-var buttonCityList=("$#city-list-container")
+let weatherInfo = [];
+let buttonCityList=$("#city-list-container")
 
-var findWeather=function(input) {
-    var cityLocation="https://api.openweathermap.org/geo/1.0/direct?q=%22" + input + "%22&appid=39528ad9ef6dff5e6f23805d2078c512"
+let findWeather=function(input) {
+    let cityLocation="https://api.openweathermap.org/geo/1.0/direct?q=%22" + input + "%22&appid=39528ad9ef6dff5e6f23805d2078c512"
     fetch(cityLocation) 
         .then(function (latLon) {
             return latLon.json();
-        })
-
-        .then(function (data) {
-           
-            var latitude = data[0].lat
-            var longitude = data[0].lon
-            var location = "https://api.openweathermap.org/data/2.5/forecast?lat="
-            + lat + "&lon=" + lon + "appid=39528ad9ef6dff5e6f23805d2078c512&units=imperial"
-            fetch(location).then(function (targetWeather){
-                return targetWeather.json()
-            })
-
-        .then(function (weatherInfo) {
-            $('#today-weather').show();
-            $('#forecast-row').show();
-            $('#city-today').text(weatherInfo.city.name + "" + dayjs().format("M/d/y"))
-            $('#weather-icon').attr("src", "https://openweathermap.org/img/wn/" + weatherInfo.list[0].weather[0].icon + "@2x.png")
-            $('#today-weather').children().eq(1).text("Temperature: " + weatherInfo.list[0].main.temp)
-            $('#today-weather').children().eq(2).text("Wind Speed: " + weatherInfo.list[0].wind.speed)
-            $('#today-weather').children().eq(3).text("Humidity: " + weatherInfo.list[0].main.humidity)
-
-            for (x=1; x<6; x++)
-                $("#" + x).children().eq(0).text(dayjs().format("M/d/y"))
-                $("#" + x).children().eq(1).attr("src", "https://openweathermap.org/img/wn/" + weatherInfo.list[0].weather[0].icon + "@2x.png")
-                $("#" + x).children().eq(2).text("Temperature: " + weatherInfo.list[8*x-1].main.temp)
-                $("#" + x).children().eq(3).text("Wind Speed: " + weatherInfo.list[8*x-1].wind.speed)
-                $("#" + x).children().eq(4).text("Humidity: " + weatherInfo.list[8*x-1].main.humidity)
+        }).then(function (data) {
+            let lat = data[0].lat
+            let lon = data[0].lon
+            var location = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39528ad9ef6dff5e6f23805d2078c512&units=imperial"
+        fetch(location).then(function (targetWeather){
+            return targetWeather.json()
+    }) .then(function (weatherData) {
+            $("#today-weather").show();
+            $("#forecast-row").show();
+            $("#city-today").text(weatherInfo + input + " " + moment().format("M/D/Y"))
+            $("#weather-icon").attr("src", "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png")
+            $("#today-weather").children().eq(1).text("Temperature: " + weatherData.temp)
+            $("#today-weather").children().eq(2).text("Wind Speed (mph): " + weatherData.wind.speed)
+            $("#today-weather").children().eq(3).text("Humidity: " + weatherData.main.humidity)
+            for (x = 1; x < 6; x++)
+                $("#" + x).children().eq(0).text(moment().add(x,"d").format("M/D/Y"))
+                $("#" + x).children().eq(1).attr("src", "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png")
+                $("#" + x).children().eq(2).text("Temperature: " + weatherData.temp)
+                $("#" + x).children().eq(3).text("Wind Speed: " + weatherData.wind.speed)
+                $("#" + x).children().eq(4).text("Humidity: " + weatherData.humidity)
+                console.log(weatherData)
             })
         })
-    }
-
+        }
+    
+    
 $('#submitBtn').on("click" || "submit", function (event) {
     event.preventDefault();
     var cityName= $('#cityName').val();
@@ -55,6 +50,11 @@ $('#submitBtn').on("click" || "submit", function (event) {
     }
 });
 
+$(".btn").on("click", function (event){
+    let buttonSearch = $(event.target).attr("id")
+    findWeather(buttonSearch)
+})
+
 var startPage = function () {
     $('#today-weather').hide()
     $('#forecast-row').hide()
@@ -64,14 +64,7 @@ var startPage = function () {
         appendedButton.text(city)
         appendedButton.attr("id", city)
         appendedButton.addClass("weather btn btn-block")
-        buttonCityList.append(appendButton)
+       buttonCityList.append(appendedButton)
     })
 }
-
 startPage();
-
-
-$(".btn").on("click", function (event){
-    let buttonSearch = $(event.target).attr("id")
-    findWeather(buttonSearch)
-})
