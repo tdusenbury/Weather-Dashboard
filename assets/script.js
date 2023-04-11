@@ -28,11 +28,11 @@ let findWeather=function(input) {
             $("#today-weather").children().eq(3).text("Humidity: " + weatherData.list[0].main.humidity) /*Today's Humidity*/
  /*Take that information and display five-days of weather*/
 
-            for (let x = 1; x < 6; x++)
-                $("#" + x).children().eq(0).text(moment().add(x,"d").format("M/D/Y")) /*5-day boxes*/
-                $("#" + x).children().eq(0).attr("weather-icon", "https://openweathermap.org/img/wn/" + weatherData.list[8 * x - 1].weather[0].icon + "@2x.png")
-                $("#" + x).children().eq(1).text("Temperature: " + weatherData.list[8 * x - 1].main.temp) /*NOT SHOWING*/
-                $("#" + x).children().eq(2).text("Wind Speed (mph): " + weatherData.list[8 * x - 1].wind.speed) /*NOT SHOWING*/
+            for (x = 1; x < 6; x++)
+                $("#" + x).children().eq(0).text(moment().add(x,"d").format("M/D/Y")) /*Date is showing*/
+                $("#" + x).children().eq(0).attr("weather-icon", "https://openweathermap.org/img/wn/" + weatherData.list[8 * x - 1].weather[0].icon + "@2x.png")/*Incorrect icon is showing in all five boxes*/
+                $("#"  + x).children().eq(1).text("Temperature: " + weatherData.list[8 * x - 1].main.temp) /*NOT SHOWING*/
+                $("#"  + x).children().eq(2).text("Wind Speed (mph): " + weatherData.list[8 * x - 1].wind.speed) /*NOT SHOWING*/
                 $("#" + x).children().eq(3).text("Humidity: " + weatherData.list[8 * x - 1].main.humidity) /*NOT SHOWING*/ 
             })
         })

@@ -8,26 +8,19 @@
 
 | Technology Used         | Resource URL           | 
 | ------------- |:-------------:| 
-| JavaScript | [https://www.w3schools.com/jsref/met_win_prompt.asp](https://www.w3schools.com/jsref/met_win_prompt.asp);  
+| JavaScript | [https://getbootstrap.com/docs/4.0/layout/grid/](https://getbootstrap.com/docs/4.0/layout/grid/);  
 
-[https://www.w3schools.com/jsref/met_win_alert.asp](https://www.w3schools.com/jsref/met_win_alert.asp);
+[https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction);
 
- [https://www.w3schools.com/jsref/met_win_confirm.asp](https://www.w3schools.com/jsref/met_win_confirm.asp); 
+ [https://www.w3schools.com/js/js_api_intro.asp](https://www.w3schools.com/js/js_api_intro.asp); 
  
- [https://www.w3schools.com/jsref/prop_win_length.aspWeb/CSS](https://www.w3schools.com/jsref/prop_win_length.asp); 
+ [https://www.w3schools.com/jquery/jquery_traversing.asp](https://www.w3schools.com/jquery/jquery_traversing.asp); 
  
- [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor); 
- 
- [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random); 
- 
- [https://www.w3schools.com/js/js_objects.asp](https://www.w3schools.com/js/js_objects.asp); 
- 
- 
- [https://www.w3schools.com/js/js_strings.asp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)
+ [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration); 
 
 ## Description 
 
-This is a Weather Dashboard application. When the user opens the application, they are presented with an input box to choose a city. When the city is chosen, the city is added to the search history. When the user clicks on the city, the screen is populated with the city name, current date, the current weather conditions, an icon of the weather conditions, temperature, humidity, and wind speed. Additionally, a 5-day forecast is presented. For user ease, a weather icon is also present in both current and forecast boxes. If another city is chosen, that information is presented on the screen.
+This is a Weather Dashboard application. When the user opens the application, they are presented with an input box to choose a city. When the city is chosen, the city is added to the search history. When the user clicks on the city, the screen is populated with the city name, current date, the current weather conditions, including temperature, humidity, and wind speed. Additionally, a 5-day forecast is presented. For user ease, a weather icon is also present in both current and forecast boxes. If another city is chosen, that information is presented on the screen and the city is added to the list.
 
 
 ![Screenshot of My Site](images/PG%20Site.PNG)
