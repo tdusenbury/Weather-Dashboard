@@ -23,7 +23,7 @@
 This is a Weather Dashboard application. When the user opens the application, they are presented with an input box to choose a city. When the city is chosen, the city is added to the search history. When the user clicks on the city, the screen is populated with the city name, current date, the current weather conditions, including temperature, humidity, and wind speed. Additionally, a 5-day forecast is presented. For user ease, a weather icon is also present in both current and forecast boxes. If another city is chosen, that information is presented on the screen and the city is added to the list.
 
 
-![Screenshot of My Site](images/PG%20Site.PNG)
+![Screenshot of My Site](images/Screen%20with%20cities.PNG)
 
 
 
@@ -33,46 +33,34 @@ This is a Weather Dashboard application. When the user opens the application, th
 
 ## Code Example
 
-Instead of using the array method to state all of my elements, I chose to use the object method by defining "keys" and then pulling each of the chosen elements into a new string called customerChoices.
+Even though we only used one API for this assignment, we had to write code to fetch the locations latitude and longitude and then put that into a second fetch. Then the information could be designated to the different areas of the application, today vs 5-day.
 
 ```
-Created an object:
-const keys = {
-  upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  lowerCase: "abcdefghijklmnopqrstuvwxyz",
-  numbers: "0123456789",
-  symbols: "!@#$%^&*~+={}[]:,./"
-}
-
-The new string:
-var customerChoices =""
-
-Directed choices to go into the new string:
-if (confirmLowerCase === true) {
-    console.log("Before ", customerChoices);
-    customerChoices = customerChoices + keys.lowerCase;
-    console.log("After ", customerChoices);
-}
+let findWeather=function(input) {
+    let cityLocation="https://api.openweathermap.org/geo/1.0/direct?q=%22" + input + "%22&appid=39528ad9ef6dff5e6f23805d2078c512"
+    fetch(cityLocation) 
+        .then(function (latLon) {
+            return latLon.json();
+        }).then(function (data) {
+            let lat = data[0].lat
+            let lon = data[0].lon
+            var location = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=39528ad9ef6dff5e6f23805d2078c512&units=imperial"
+        fetch(location).then(function (targetWeather){
+            return targetWeather.json()
+    })} )}
 ```
 
 
 ## Usage 
 
-This Password Generator can be used by anyone who wants to control most of the length and types of characters in a random password.
+As expressed in the assignment, a traveler could use this application to see what to pack for each location for up to five days of a trip. I like using the app to see what the weather is like for friends and family all over the world.
 
 
 ## Learning Points 
 
-This project involved utilizing JavaScript. I tried to approach it section by section initially, but became stuck. I was able to get advice from my tutor as well as classmates and went back to writing each section followed by a console.log to test that the code was working without error. I learned about arrays and objects, random number/character generation, the types of message boxes prompts, alerts, and confirms can produce.
+This assignment allowed me to use new skills working with third-party APIs. It took more than a minute to figure out what to ask, or fetch, first; and then how to use that information for the second ask. Additionally, I had to figure out how to bring in the data for today, but also use a for loop to populate the 5-day forecast. 
 
-I struggled with this project every time I tried to move to the next part before it was ready. It took lots of testing before I was able to get my "If not truthy" alert correct if someone did not choose any options. I was trying to evaluate it as an equality not as a true/false statement.
-Fortunately, a great classmate helped explain my error and helped me simplify the statement.
-Here are pictures of the code that finally worked and the message it now produces if no character options are chosen:
-
-![Screenshot of My Site](images/Code%20if%20No%20Choices.PNG)
-
-
-![Screenshot of My Site](images/No%20Choices%20Made%20Message.PNG)
+I am getting better, but it is still a struggle to get everything to work together. I relied on the console.log to help me locate errors. Learning to pivot if something is not working is also becoming a "sooner rather than later" habit.
 
 ## Author Info
 
