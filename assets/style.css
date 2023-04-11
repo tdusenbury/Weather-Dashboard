@@ -82,11 +82,10 @@ main {
     font-size: 20px;
 }
 
-#city-list-container {
+#today-weather {
+    padding-bottom: 50px;
 
 }
-
-
 
 #city-today {
     color: whitesmoke;
@@ -104,20 +103,20 @@ main {
     font-size: 20px;
     font-weight: 575;
 }
+#forecast-row h3 {
+   
+}
 h3 {
     margin-left: 30px;
-    margin-bottom: 0px;
     padding: 10px; 
 }
-#forecast-row {
-   
 
-}
 section {
     border-radius: 10px;
     background-color: whitesmoke; 
     border-style: line;
     border-width: 5px;
+    margin-top: 50px;
     margin-left: 30px;
     background-color: gray;
     color: var(--dark-dark);

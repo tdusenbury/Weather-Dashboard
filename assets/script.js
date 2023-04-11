@@ -1,6 +1,7 @@
 let weatherInfo = [];
 let buttonCityList=$("#city-list-container")
 
+/*fetch city to get longitude and latitude, then fetch again for specific weather forecast*/
 let findWeather=function(input) {
     let cityLocation="https://api.openweathermap.org/geo/1.0/direct?q=%22" + input + "%22&appid=39528ad9ef6dff5e6f23805d2078c512"
     fetch(cityLocation) 
@@ -9,28 +10,33 @@ let findWeather=function(input) {
         }).then(function (data) {
             let lat = data[0].lat
             let lon = data[0].lon
-            var location = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=39528ad9ef6dff5e6f23805d2078c512&units=imperial"
+            var location = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=39528ad9ef6dff5e6f23805d2078c512&units=imperial"
         fetch(location).then(function (targetWeather){
             return targetWeather.json()
-    }) .then(function (weatherData) {
+    }) 
+/*Take that information and display today's weather*/
+    .then(function (weatherData) {
+        console.log(weatherData)
             $("#today-weather").show();
             $("#forecast-row").show();
-            $("#city-today").text(input + " " + moment().format("M/D/Y")) /*City and today's date*/
-            $("#weather-icon").attr("src", "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png") /*NOT SHOWING: Weather icon next to city and today's date*/
-            $("#today-weather").children().eq(1).text("Temperature: " + weatherData.main.temp) /*Today's Temperature*/
-            $("#today-weather").children().eq(2).text("Wind Speed (mph): " + weatherData.wind.speed) /*Today's Wind*/
-            $("#today-weather").children().eq(3).text("Humidity: " + weatherData.main.humidity) /*Today's Humidity*/
-            for (x = 1; x < 6; x++)
+            $("#city-today").text(input + " " + moment().format("M/D/Y")) 
+            var img = $('<img id="icon">');
+            img.attr("src","https://openweathermap.org/img/wn/" + weatherData.list[0].weather[0].icon + "@2x.png") 
+            img.appendTo("#weather-icon");
+            $("#today-weather").children().eq(1).text("Temperature: " + weatherData.list[0].main.temp) /*Today's Temperature*/
+            $("#today-weather").children().eq(2).text("Wind Speed (mph): " + weatherData.list[0].wind.speed) /*Today's Wind*/
+            $("#today-weather").children().eq(3).text("Humidity: " + weatherData.list[0].main.humidity) /*Today's Humidity*/
+ /*Take that information and display five-days of weather*/
+
+            for (let x = 1; x < 6; x++)
                 $("#" + x).children().eq(0).text(moment().add(x,"d").format("M/D/Y")) /*5-day boxes*/
-                $("#" + x).children().eq(0).attr("src", "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png") /*5-day boxes*/
-                $("#" + x).children().eq(1).text("Temperature: " + weatherData.main.temp) /*NOT SHOWING*/
-                $("#" + x).children().eq(2).text("Wind Speed (mph): " + weatherData.wind.speed) /*NOT SHOWING*/
-                $("#" + x).children().eq(3).text("Humidity: " + weatherData.main.humidity) /*NOT SHOWING*/
-                console.log(weatherData)
+                $("#" + x).children().eq(0).attr("weather-icon", "https://openweathermap.org/img/wn/" + weatherData.list[8 * x - 1].weather[0].icon + "@2x.png")
+                $("#" + x).children().eq(1).text("Temperature: " + weatherData.list[8 * x - 1].main.temp) /*NOT SHOWING*/
+                $("#" + x).children().eq(2).text("Wind Speed (mph): " + weatherData.list[8 * x - 1].wind.speed) /*NOT SHOWING*/
+                $("#" + x).children().eq(3).text("Humidity: " + weatherData.list[8 * x - 1].main.humidity) /*NOT SHOWING*/ 
             })
         })
-        }
-    
+    }
     
 $('#submitBtn').on("click" || "submit", function (event) {
     event.preventDefault();
@@ -51,13 +57,15 @@ $('#submitBtn').on("click" || "submit", function (event) {
 });
 
 $(".btn").on("click", function (event){
+    event.preventDefault();
     let buttonSearch = $(event.target).attr("id")
     findWeather(buttonSearch)
 })
 
 var startPage = function () {
-    $('#today-weather').hide()
-    $('#forecast-row').hide()
+    $("#today-weather").hide()
+    $("#forecast-row").hide()
+
     var cityString=JSON.parse(localStorage.getItem("cityString")) || [];
     cityString.forEach(function (city) {
         var appendedButton=$(("<li></li>"))
