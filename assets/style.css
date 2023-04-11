@@ -103,7 +103,8 @@ main {
     font-size: 20px;
     font-weight: 575;
 }
-#forecast-row h3 {
+#forecast-row {
+    
    
 }
 h3 {
@@ -116,11 +117,10 @@ section {
     background-color: whitesmoke; 
     border-style: line;
     border-width: 5px;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-left: 30px;
-    background-color: gray;
     color: var(--dark-dark);
-    height: 200px;
+    height: 250px;
 }
 ul {
     margin-right: 30px;

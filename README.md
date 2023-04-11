@@ -28,7 +28,7 @@ This is a Weather Dashboard application. When the user opens the application, th
 
 
 
-[Visit the Deployed Site](https://tdusenbury.github.io/Password-Generator-Project/)
+[Visit the Deployed Site](https://tdusenbury.github.io/Weather-Dashboard/)
 
 
 ## Code Example
