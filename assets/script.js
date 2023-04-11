@@ -28,12 +28,13 @@ let findWeather=function(input) {
             $("#today-weather").children().eq(3).text("Humidity: " + weatherData.list[0].main.humidity) /*Today's Humidity*/
  /*Take that information and display five-days of weather*/
 
-            for (x = 1; x < 6; x++)
+            for (x = 1; x < 6; x++) {
                 $("#day-" + x).children().eq(0).text(moment().add(x,"d").format("M/D/Y"))
-                $("#day-" + x).children().eq(1).attr("weather-icon", "https://openweathermap.org/img/wn/" + weatherData.list[8 * x - 1].weather[0].icon + "@2x.png")/
-                $("#day-" + x).children().eq(2).text("Temperature: " + weatherData.list[8 * x - 1].main.temp) 
+                $("#day-" + x).children().eq(1).attr("https://openweathermap.org/img/wn/" + weatherData.list[8 * x - 1].weather[0].icon + "@2x.png")
+                $("#day-" + x).children().eq(2).text("Temperature: " + weatherData.list[8 * x - 1].main.temp)
                 $("#day-" + x).children().eq(3).text("Wind Speed (mph): " + weatherData.list[8 * x - 1].wind.speed) 
                 $("#day-" + x).children().eq(4).text("Humidity: " + weatherData.list[8 * x - 1].main.humidity) 
+            }
             })
         })
     }
