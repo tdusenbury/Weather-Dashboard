@@ -1,9 +1,5 @@
 # Weather-Dashboard
 
-
-##THIS IS A TEMPLATE---NEEDS TO BE UPDATED BEFORE FINAL TURN IN
-
-
 ## Technology Used 
 
 | Technology Used         | Resource URL           | 
